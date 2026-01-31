@@ -1,0 +1,11 @@
+
+/* Loading Screen Animations */
+@keyframes loading-bar {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+.loader-wrapper {
+  perspective: 1000px;
+}

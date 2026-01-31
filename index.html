@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="IFFO ELSANDE PRATAMA PUTRA - Machine Learning Engineer & AI Research Enthusiast specializing in Deep Learning, Reinforcement Learning, and AI solutions."
+    />
+    <title>Iffo Elsande Pratama Putra | ML Engineer & AI Researcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: 'var(--bg-primary)',
+              secondary: 'var(--bg-secondary)',
+              textPrimary: 'var(--text-primary)',
+              textSecondary: 'var(--text-secondary)',
+              accentCyan: 'var(--accent-cyan)',
+              accentEmerald: 'var(--accent-emerald)',
+              accentGold: 'var(--accent-gold)',
+              accentSilver: 'var(--accent-silver)',
+              glass: 'var(--glass-bg)',
+              glassBorder: 'var(--glass-border)',
+              nav: 'var(--nav-bg)',
+              navBorder: 'var(--nav-border)',
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body
+    class="bg-primary text-textPrimary font-['Inter',sans-serif] overflow-x-hidden"
+  >
+    <!-- Loading Screen -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-[9999] bg-primary flex items-center justify-center flex-col"
+    >
+      <div class="loader-wrapper relative w-24 h-24 mb-8">
+        <!-- Core -->
+        <div class="absolute inset-0 m-auto w-12 h-12 bg-accentCyan/20 rounded-full blur-md animate-pulse"></div>
+        <div class="absolute inset-0 m-auto w-8 h-8 bg-accentCyan rounded-full shadow-[0_0_15px_rgba(34,211,238,0.8)]"></div>
+        
+        <!-- Rings -->
+        <div class="absolute inset-0 border-2 border-accentCyan/30 rounded-full border-t-accentCyan animate-[spin_3s_linear_infinite]"></div>
+        <div class="absolute inset-[-10px] border border-accentEmerald/20 rounded-full border-b-accentEmerald animate-[spin_4s_linear_infinite_reverse]"></div>
+        <div class="absolute inset-[-20px] border border-accentCyan/10 rounded-full border-l-accentCyan animate-[spin_5s_linear_infinite]"></div>
+      </div>
+      
+      <div class="text-center">
+        <p class="text-accentCyan font-mono text-sm tracking-[0.3em] uppercase">
+          Loading Page...
+        </p>
+        <div class="h-1 w-32 mx-auto mt-2 bg-accentCyan/20 rounded-full overflow-hidden">
+            <div class="h-full bg-accentCyan/80 w-0 animate-[loading-bar_1.5s_ease-in-out_forwards]"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Neural Network Canvas -->
+    <canvas
+      id="neural-canvas"
+      class="fixed inset-0 z-0 pointer-events-none"
+    ></canvas>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-nav border-b border-navBorder"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="logo-brand">
+          <span class="text-xl font-bold text-textPrimary">EL</span><span class="text-xl font-light text-textSecondary">SANDE</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="nav-link" data-en="About" data-id="Tentang">About</a>
+          <a href="#experience" class="nav-link" data-en="Experience" data-id="Pengalaman">Experience</a>
+          <a href="#projects" class="nav-link" data-en="Projects" data-id="Proyek">Projects</a>
+          <a href="#skills" class="nav-link" data-en="Skills" data-id="Keahlian">Skills</a>
+          <a href="#contact" class="nav-link" data-en="Contact" data-id="Kontak">Contact</a>
+          <div class="flex items-center gap-3">
+            <button id="lang-toggle" class="lang-toggle">
+              <span class="lang-option active" data-lang="en">EN</span>
+              <span class="lang-separator">/</span>
+              <span class="lang-option" data-lang="id">ID</span>
+            </button>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+              <!-- Sun Icon (for Light Mode) -->
+              <svg class="w-5 h-5 sun-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+              <!-- Moon Icon (for Dark Mode) -->
+              <svg class="w-5 h-5 moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 md:hidden">
+          <button id="lang-toggle-mobile" class="lang-toggle">
+            <span class="lang-option active" data-lang="en">EN</span>
+            <span class="lang-separator">/</span>
+            <span class="lang-option" data-lang="id">ID</span>
+          </button>
+          <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle Theme">
+            <!-- Sun Icon -->
+            <svg class="w-5 h-5 sun-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <!-- Moon Icon -->
+            <svg class="w-5 h-5 moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+          </button>
+          <button id="mobile-menu-btn" class="text-textPrimary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-40 bg-nav/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8"
+    >
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#experience" class="mobile-nav-link">Experience</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <a href="#skills" class="mobile-nav-link">Skills</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="relative min-h-screen flex items-center justify-center px-6 pt-20"
+    >
+      <div class="max-w-5xl mx-auto w-full z-10 px-4">
+        <div class="flex flex-col-reverse md:flex-row items-center justify-center gap-12 md:gap-16">
+          <!-- Text Content -->
+          <div class="text-center md:text-left flex-1 reveal-up">
+            <h1
+              class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-2"
+            >
+              <span
+                class="block bg-gradient-to-r from-textPrimary via-textSecondary to-textPrimary bg-clip-text text-transparent"
+                >IFFO ELSANDE</span
+              >
+              <span
+                class="block bg-gradient-to-r from-textSecondary via-textPrimary to-textSecondary bg-clip-text text-transparent"
+                >PRATAMA PUTRA</span
+              >
+            </h1>
+            <div class="h-8 mt-6 mb-8">
+              <span
+                id="typed-text"
+                class="text-lg md:text-xl text-textSecondary"
+              ></span>
+              <span class="typing-cursor">|</span>
+            </div>
+            <p
+              class="text-textSecondary max-w-xl text-base md:text-lg mb-10 leading-relaxed"
+              data-en="&quot;Building intelligent systems through data, optimization, and deep learning architectures.&quot;"
+              data-id="&quot;Membangun sistem cerdas melalui data, optimasi, dan arsitektur deep learning.&quot;"
+            >
+              "Building intelligent systems through data, optimization, and deep
+              learning architectures."
+            </p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-4">
+              <a
+                href="IFFO ELSANDE PRATAMA PUTRA - RESUME.pdf"
+                download
+                class="btn-primary"
+                data-en="Download CV"
+                data-id="Unduh CV"
+                >Download CV</a
+              >
+              <a href="#contact" class="btn-secondary" data-en="Contact Me" data-id="Hubungi Saya"
+                >Contact Me</a
+              >
+            </div>
+          </div>
+          <!-- Profile Photo -->
+          <div class="reveal-right">
+            <div class="profile-photo-wrapper float-animation">
+              <img src="Iffo Elsande P.png" alt="Iffo Elsande Pratama Putra" class="profile-photo">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg
+          class="w-6 h-6 text-accentCyan"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          ></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-32 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal-up">
+          <p
+            class="text-accentCyan uppercase tracking-[0.3em] text-xs font-light mb-4"
+            data-en="About Me"
+            data-id="Tentang Saya"
+          >
+            About Me
+          </p>
+          <h2 class="text-4xl md:text-5xl font-bold" data-en="Professional Profile" data-id="Profil Profesional">Professional Profile</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="md:col-span-2 glass-panel p-8 reveal-left">
+            <p class="text-textSecondary leading-relaxed text-lg mb-6" data-en="Informatics Engineering graduate with a deep focus on building <span class='text-accentCyan'>Machine Learning</span> and <span class='text-accentCyan'>Deep Learning</span> systems using Python, PyTorch, and TensorFlow. Experienced in constructing end-to-end data pipelines, training and evaluating models to deliver measurable, impactful AI solutions." data-id="Lulusan Teknik Informatika dengan fokus mendalam pada pembangunan sistem <span class='text-accentCyan'>Machine Learning</span> dan <span class='text-accentCyan'>Deep Learning</span> menggunakan Python, PyTorch, dan TensorFlow. Berpengalaman dalam membangun pipeline data end-to-end, melatih dan mengevaluasi model untuk memberikan solusi AI yang terukur dan berdampak.">
+              Informatics Engineering graduate with a deep focus on building
+              <span class="text-accentCyan">Machine Learning</span> and
+              <span class="text-accentCyan">Deep Learning</span> systems using
+              Python, PyTorch, and TensorFlow. Experienced in constructing end-to-end data
+              pipelines, training and evaluating models to deliver measurable,
+              impactful AI solutions.
+            </p>
+            <p class="text-textSecondary leading-relaxed text-lg" data-en="Strong analytical approach with expertise in model architecture design and performance optimization in technology-driven, data-intensive environments. Passionate about advancing the frontier of artificial intelligence research and applications." data-id="Pendekatan analitis yang kuat dengan keahlian dalam desain arsitektur model dan optimasi kinerja di lingkungan berbasis teknologi dan data-intensif. Bersemangat untuk memajukan batas penelitian dan aplikasi kecerdasan buatan.">
+              Strong analytical approach with expertise in model architecture
+              design and performance optimization in technology-driven,
+              data-intensive environments. Passionate about advancing the
+              frontier of artificial intelligence research and applications.
+            </p>
+            <div class="flex flex-wrap gap-3 mt-8">
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">Deep Learning</span>
+              <span class="skill-tag">Reinforcement Learning</span>
+              <span class="skill-tag">AI Governance</span>
+              <span class="skill-tag">Model Optimization</span>
+              <span class="skill-tag">Data Pipeline</span>
+            </div>
+          </div>
+          <div
+            class="glass-panel p-8 flex flex-col items-center justify-center reveal-right"
+          >
+            <div class="gpa-badge">
+              <span
+                class="text-5xl font-bold bg-gradient-to-r from-accentCyan to-accentEmerald bg-clip-text text-transparent"
+                >3.85</span
+              >
+              <span class="text-textSecondary text-lg">/ 4.00</span>
+            </div>
+            <p class="text-accentCyan uppercase tracking-[0.2em] text-xs mt-4" data-en="Grade Point Average" data-id="Indeks Prestasi Kumulatif">
+              Grade Point Average
+            </p>
+            <div class="mt-6 text-center">
+              <p class="text-textSecondary text-sm">📍 Universitas Negeri Surabaya</p>
+              <p class="text-textSecondary text-sm mt-2">🎓 Teknik Informatika</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section
+      id="experience"
+      class="relative py-32 px-6 bg-gradient-to-b from-transparent via-secondary to-transparent"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 reveal-up">
+          <p
+            class="text-accentCyan uppercase tracking-[0.3em] text-xs font-light mb-4"
+            data-en="Career Journey"
+            data-id="Perjalanan Karir"
+          >
+            Career Journey
+          </p>
+          <h2 class="text-4xl md:text-5xl font-bold" data-en="Experience" data-id="Pengalaman">Experience</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal-left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel p-6">
+              <span class="text-accentCyan text-sm font-medium" data-en="July 2024 – Present" data-id="Juli 2024 – Sekarang">July 2024 – Present</span>
+              <h3 class="text-xl font-bold mt-2 mb-1">
+                Freelance Data Science and Machine Learning Engineer
+              </h3>
+              <p class="text-accentEmerald text-sm mb-4" data-en="Cons Code | Surabaya, East Java" data-id="Cons Code | Surabaya, Jawa Timur">
+                Cons Code | Surabaya, East Java
+              </p>
+              <ul class="text-textSecondary space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Increased prediction accuracy by 15% through model optimization" data-id="Meningkatkan akurasi prediksi sebesar 15% melalui optimasi model">Increased prediction
+                  accuracy by 15% through model optimization</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Automated data cleaning pipeline reducing processing time by 30%" data-id="Otomatisasi pipeline pembersihan data mengurangi waktu pemrosesan sebesar 30%">Automated data
+                  cleaning pipeline reducing processing time by 30%</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Built scalable ML workflows for production deployment" data-id="Membangun alur kerja ML yang dapat diskalakan untuk penerapan produksi">Built scalable ML
+                  workflows for production deployment</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item reveal-right">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel p-6">
+              <span class="text-accentCyan text-sm font-medium" data-en="October 2024 – January 2025" data-id="Oktober 2024 – Januari 2025">October 2024 – January 2025</span>
+              <h3 class="text-xl font-bold mt-2 mb-1">
+                Intern - Engineer
+              </h3>
+              <p class="text-accentEmerald text-sm mb-4">
+                PT Radnet Digital Indonesia | Surabaya, Jawa Timur
+              </p>
+              <ul class="text-textSecondary space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Developed websites for MSMEs using the Django framework" data-id="Mengembangkan website untuk UMKM menggunakan Django framework">Developed websites for MSMEs using the Django framework</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Served as a speaker in a webinar regarding website development" data-id="Menjadi pemateri dalam webinar terkait pengembangan website">Served as a speaker in a webinar regarding website development</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Learned and implemented Linux operating system fundamentals" data-id="Mempelajari dan mengimplementasikan dasar-dasar sistem operasi Linux">Learned and implemented Linux operating system fundamentals</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item reveal-left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel p-6">
+              <span class="text-accentCyan text-sm font-medium" data-en="February 2024 – June 2024" data-id="Februari 2024 – Juni 2024">February 2024 – June 2024</span>
+              <h3 class="text-xl font-bold mt-2 mb-1">
+                Internship – IBM Advanced AI Program
+              </h3>
+              <p class="text-accentEmerald text-sm mb-4" data-en="PT Kinema Systrans Multimedia | Batam, Riau" data-id="PT Kinema Systrans Multimedia | Batam, Riau">
+                PT Kinema Systrans Multimedia | Batam, Riau
+              </p>
+              <ul class="text-textSecondary space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Contributed to generative AI deployment initiatives" data-id="Berkontribusi pada inisiatif penerapan AI generatif">Contributed to
+                  generative AI deployment initiatives</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Applied AI governance & data management using Watsonx.data" data-id="Menerapkan tata kelola AI & manajemen data menggunakan Watsonx.data">Applied AI
+                  governance & data management using Watsonx.data</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accentCyan mt-1">▹</span> <span data-en="Developed deep learning models with TensorFlow & PyTorch" data-id="Mengembangkan model deep learning dengan TensorFlow & PyTorch">Developed deep
+                  learning models with TensorFlow & PyTorch</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="relative py-32 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal-up">
+          <p
+            class="text-accentCyan uppercase tracking-[0.3em] text-xs font-light mb-4"
+            data-en="Featured Work"
+            data-id="Karya Unggulan"
+          >
+            Featured Work
+          </p>
+          <h2 class="text-4xl md:text-5xl font-bold" data-en="Projects" data-id="Proyek">Projects</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Project 1 -->
+          <div class="project-card glass-panel p-8 reveal-up">
+            <div class="flex items-start justify-between mb-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 flex items-center justify-center"
+              >
+                <svg
+                  class="w-6 h-6 text-accentCyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  ></path>
+                </svg>
+              </div>
+              <a
+                href="https://github.com/Elsande/Klasifikasi-Serangan-DoS-pada-Jaringan-Blockchain"
+                target="_blank"
+                class="text-textSecondary hover:text-accentCyan transition-colors"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+            </div>
+            <h3 class="text-xl font-bold mb-3" data-en="DoS Attack Classification on Blockchain using PPO" data-id="Klasifikasi Serangan DoS pada Blockchain menggunakan PPO">
+              DoS Attack Classification on Blockchain using PPO
+            </h3>
+            <p class="text-textSecondary text-sm leading-relaxed mb-6" data-en="Designed and evaluated a Proximal Policy Optimization (PPO) reinforcement learning model to detect and classify Denial-of-Service attacks in blockchain networks, improving detection accuracy and response efficiency." data-id="Merancang dan mengevaluasi model reinforcement learning Proximal Policy Optimization (PPO) untuk mendeteksi dan mengklasifikasikan serangan Denial-of-Service di jaringan blockchain, meningkatkan akurasi deteksi dan efisiensi respons.">
+              Designed and evaluated a Proximal Policy Optimization (PPO)
+              reinforcement learning model to detect and classify
+              Denial-of-Service attacks in blockchain networks, improving
+              detection accuracy and response efficiency.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Reinforcement Learning</span>
+              <span class="project-tag">PPO</span>
+              <span class="project-tag">Cybersecurity</span>
+              <span class="project-tag">Blockchain</span>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="project-card glass-panel p-8 reveal-up">
+            <div class="flex items-start justify-between mb-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 flex items-center justify-center"
+              >
+                <svg
+                  class="w-6 h-6 text-accentCyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <a
+                href="https://github.com/Elsande/Project-Macro---Klasifikasi-Tanaman-Tomat"
+                target="_blank"
+                class="text-textSecondary hover:text-accentCyan transition-colors"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+            </div>
+            <h3 class="text-xl font-bold mb-3" data-en="Tomato Disease Detection (ResNet-v2)" data-id="Deteksi Penyakit Tomat (ResNet-v2)">
+              Tomato Disease Detection (ResNet-v2)
+            </h3>
+            <p class="text-textSecondary text-sm leading-relaxed mb-6" data-en="Developed a deep learning image classification system using TensorFlow and transfer learning with ResNet-v2 to accurately identify multiple tomato plant diseases." data-id="Mengembangkan sistem klasifikasi gambar deep learning menggunakan TensorFlow dan transfer learning dengan ResNet-v2 untuk mengidentifikasi berbagai penyakit tanaman tomat secara akurat.">
+              Developed a deep learning image classification system using
+              TensorFlow and transfer learning with ResNet-v2 to accurately
+              identify multiple tomato plant diseases.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="project-tag">TensorFlow</span>
+              <span class="project-tag">Deep Learning</span>
+              <span class="project-tag">Computer Vision</span>
+              <span class="project-tag">Transfer Learning</span>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-card glass-panel p-8 reveal-up">
+            <div class="flex items-start justify-between mb-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 flex items-center justify-center"
+              >
+                <svg
+                  class="w-6 h-6 text-accentCyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                  ></path>
+                </svg>
+              </div>
+              <a
+                href="https://github.com/Elsande/Nusantara-Valor"
+                target="_blank"
+                class="text-textSecondary hover:text-accentCyan transition-colors"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+            </div>
+            <h3 class="text-xl font-bold mb-3" data-en="Used Goods Classification System" data-id="Sistem Klasifikasi Barang Bekas">
+              Used Goods Classification System
+            </h3>
+            <p class="text-textSecondary text-sm leading-relaxed mb-6" data-en="Built a computer vision classification pipeline including dataset preprocessing, background removal, augmentation with Roboflow, and real-time deployment via API." data-id="Membangun pipeline klasifikasi computer vision termasuk pemrosesan dataset, penghapusan latar belakang, augmentasi dengan Roboflow, dan penerapan real-time melalui API.">
+              Built a computer vision classification pipeline including dataset
+              preprocessing, background removal, augmentation with Roboflow, and
+              real-time deployment via API.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Computer Vision</span>
+              <span class="project-tag">Roboflow</span>
+              <span class="project-tag">Image Processing</span>
+            </div>
+          </div>
+          <!-- Project 4 -->
+          <div class="project-card glass-panel p-8 reveal-up">
+            <div class="flex items-start justify-between mb-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 flex items-center justify-center"
+              >
+                <svg
+                  class="w-6 h-6 text-accentCyan"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                  ></path>
+                </svg>
+              </div>
+              <a
+                href="https://github.com/Elsande/Klasifikasi-Diabetes"
+                target="_blank"
+                class="text-textSecondary hover:text-accentCyan transition-colors"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+            </div>
+            <h3 class="text-xl font-bold mb-3" data-en="Diabetes Classification System" data-id="Sistem Klasifikasi Diabetes">
+              Diabetes Classification System
+            </h3>
+            <p class="text-textSecondary text-sm leading-relaxed mb-6" data-en="Implemented Random Forest and Multi-Layer Perceptron models for healthcare classification with comprehensive evaluation metrics including AUC-ROC to ensure strong generalization." data-id="Mengimplementasikan model Random Forest dan Multi-Layer Perceptron untuk klasifikasi kesehatan dengan metrik evaluasi komprehensif termasuk AUC-ROC untuk memastikan generalisasi yang kuat.">
+              Implemented Random Forest and Multi-Layer Perceptron models for
+              healthcare classification with comprehensive evaluation metrics
+              including AUC-ROC to ensure strong generalization.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="project-tag">Scikit-Learn</span>
+              <span class="project-tag">Random Forest</span>
+              <span class="project-tag">MLP</span>
+              <span class="project-tag">Healthcare AI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section
+      id="skills"
+      class="relative py-32 px-6 bg-gradient-to-b from-transparent via-secondary to-transparent"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal-up">
+          <p
+            class="text-accentCyan uppercase tracking-[0.3em] text-xs font-light mb-4"
+            data-en="Technical Expertise"
+            data-id="Keahlian Teknis"
+          >
+            Technical Expertise
+          </p>
+          <h2 class="text-4xl md:text-5xl font-bold" data-en="Skills & Technologies" data-id="Keahlian & Teknologi">Skills & Technologies</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glass-panel p-6 reveal-up">
+            <h3
+              class="text-accentCyan uppercase tracking-wider text-xs font-medium mb-4"
+              data-en="Programming Languages"
+              data-id="Bahasa Pemrograman"
+            >
+              Programming Languages
+            </h3>
+            <div class="space-y-3">
+              <div class="skill-item primary">
+                <span>Python</span>
+                <span class="text-xs text-accentEmerald" data-en="Primary" data-id="Utama">Primary</span>
+              </div>
+              <div class="skill-item"><span>Java</span></div>
+              <div class="skill-item"><span>C++</span></div>
+              <div class="skill-item"><span>JavaScript</span></div>
+              <div class="skill-item"><span>HTML/CSS</span></div>
+            </div>
+          </div>
+          <div class="glass-panel p-6 reveal-up">
+            <h3
+              class="text-accentCyan uppercase tracking-wider text-xs font-medium mb-4"
+              data-en="Frameworks"
+              data-id="Framework"
+            >
+              Frameworks
+            </h3>
+            <div class="space-y-3">
+              <div class="skill-item"><span>Django</span></div>
+              <div class="skill-item"><span>Flask</span></div>
+              <div class="skill-item"><span>Streamlit</span></div>
+              <div class="skill-item"><span>FastAPI (RESTful API)</span></div>
+            </div>
+          </div>
+          <div class="glass-panel p-6 reveal-up">
+            <h3
+              class="text-accentCyan uppercase tracking-wider text-xs font-medium mb-4"
+              data-en="Data & AI"
+              data-id="Data & AI"
+            >
+              Data & AI
+            </h3>
+            <div class="space-y-3">
+              <div class="skill-item"><span>TensorFlow</span></div>
+              <div class="skill-item"><span>PyTorch</span></div>
+              <div class="skill-item"><span>Scikit-Learn</span></div>
+              <div class="skill-item"><span>Machine Learning</span></div>
+              <div class="skill-item"><span>Deep Learning</span></div>
+              <div class="skill-item"><span>Reinforcement Learning</span></div>
+            </div>
+          </div>
+          <div class="glass-panel p-6 reveal-up">
+            <h3
+              class="text-accentCyan uppercase tracking-wider text-xs font-medium mb-4"
+              data-en="Tools"
+              data-id="Alat"
+            >
+              Tools
+            </h3>
+            <div class="space-y-3">
+              <div class="skill-item"><span>Git</span></div>
+              <div class="skill-item"><span>Docker</span></div>
+              <div class="skill-item"><span>SQL</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 text-center reveal-up">
+          <h3
+            class="text-textSecondary uppercase tracking-wider text-xs font-medium mb-6"
+            data-en="Professional Attributes"
+            data-id="Atribut Profesional"
+          >
+            Professional Attributes
+          </h3>
+          <div class="flex flex-wrap justify-center gap-3">
+            <span class="attribute-badge" data-en="Analytical Thinking" data-id="Berpikir Analitis">Analytical Thinking</span>
+            <span class="attribute-badge" data-en="Structured Problem Solving" data-id="Pemecahan Masalah Terstruktur">Structured Problem Solving</span>
+            <span class="attribute-badge" data-en="Technical Communication" data-id="Komunikasi Teknis">Technical Communication</span>
+            <span class="attribute-badge" data-en="Adaptive Learning" data-id="Pembelajaran Adaptif">Adaptive Learning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="relative py-32 px-6 bg-gradient-to-b from-transparent via-secondary to-primary"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 reveal-up">
+          <p
+            class="text-accentCyan uppercase tracking-[0.3em] text-xs font-light mb-4"
+            data-en="Get In Touch"
+            data-id="Hubungi Saya"
+          >
+            Get In Touch
+          </p>
+          <h2 class="text-4xl md:text-5xl font-bold" data-en="Contact" data-id="Kontak">Contact</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="reveal-left">
+            <h3 class="text-2xl font-bold mb-6" data-en="Let's Build Something Amazing" data-id="Mari Bangun Sesuatu yang Luar Biasa">
+              Let's Build Something Amazing
+            </h3>
+            <p class="text-textSecondary mb-8 leading-relaxed" data-en="Interested in collaboration or have a project in mind? I'm always open to discussing new opportunities in AI and Machine Learning." data-id="Tertarik untuk berkolaborasi atau memiliki ide proyek? Saya selalu terbuka untuk mendiskusikan peluang baru di bidang AI dan Machine Learning.">
+              Interested in collaboration or have a project in mind? I'm always
+              open to discussing new opportunities in AI and Machine Learning.
+            </p>
+            <div class="space-y-4">
+              <a href="mailto:elsandeputra890@gmail.com" class="contact-link">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                elsandeputra890@gmail.com
+              </a>
+              <a
+                href="https://www.linkedin.com/in/iffo-elsande-750178239/"
+                target="_blank"
+                class="contact-link"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+                <span data-en="LinkedIn Profile" data-id="Profil LinkedIn">LinkedIn Profile</span>
+              </a>
+              <a
+                href="https://github.com/Elsande"
+                target="_blank"
+                class="contact-link"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+                <span data-en="GitHub Profile" data-id="Profil GitHub">GitHub Profile</span>
+              </a>
+            </div>
+          </div>
+          <form id="contact-form" class="glass-panel p-8 reveal-right">
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm text-textSecondary mb-2" data-en="Name" data-id="Nama">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  class="form-input"
+                  placeholder="Your name"
+                  data-en="Your name"
+                  data-id="Nama Anda"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block text-sm text-textSecondary mb-2" data-en="Email" data-id="Email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="your@email.com"
+                  data-en="your@email.com"
+                  data-id="email@anda.com"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block text-sm text-textSecondary mb-2" data-en="Message" data-id="Pesan">Message</label>
+                <textarea
+                  name="message"
+                  rows="4"
+                  class="form-input resize-none"
+                  placeholder="Your message..."
+                  data-en="Your message..."
+                  data-id="Pesan Anda..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full" data-en="Send Message" data-id="Kirim Pesan">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-accentCyan/10">
+      <div class="max-w-7xl mx-auto text-center">
+        <p class="text-textSecondary text-sm" data-en="© 2025 IFFO ELSANDE PRATAMA PUTRA. All rights reserved." data-id="© 2025 IFFO ELSANDE PRATAMA PUTRA. Hak cipta dilindungi.">
+          © 2025 IFFO ELSANDE PRATAMA PUTRA. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
