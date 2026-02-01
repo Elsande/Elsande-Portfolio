@@ -171,6 +171,13 @@ html {
   }
 }
 
+@media (max-width: 480px) {
+  .profile-photo-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+}
+
 /* Floating Animation */
 @keyframes float {
   0% {
@@ -385,6 +392,13 @@ html {
   box-shadow: 0 0 40px var(--glass-glow);
 }
 
+@media (max-width: 768px) {
+  .glass-panel:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px var(--glass-glow);
+  }
+}
+
 /* Skill Tags */
 .skill-tag {
   display: inline-block;
@@ -466,6 +480,16 @@ html {
 
 .timeline-content {
   margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .timeline-content {
+    margin-left: 0.5rem;
+  }
+  
+  .timeline-item {
+    margin-bottom: 3rem;
+  }
 }
 
 /* Project Cards */
@@ -633,7 +657,39 @@ html {
   .btn-secondary,
   .btn-ghost {
     width: 100%;
+    max-width: 400px;
     text-align: center;
+  }
+
+  /* Prevent hero section content from overlapping scroll arrow */
+  #hero {
+    padding-bottom: 6rem;
+    min-height: 100svh; /* Use SVH for better mobile height handling */
+  }
+  
+  .glass-panel {
+    padding: 1.5rem !important; /* Smaller padding on mobile */
+  }
+  
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .logo-brand span {
+    font-size: 1.125rem;
   }
 }
 

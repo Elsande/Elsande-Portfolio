@@ -148,7 +148,7 @@
     <!-- Hero Section -->
     <section
       id="hero"
-      class="relative min-h-screen flex items-center justify-center px-6 pt-20"
+      class="relative min-h-[100svh] flex items-center justify-center px-6 pt-24 pb-32 md:pb-20"
     >
       <div class="max-w-5xl mx-auto w-full z-10 px-4">
         <div class="flex flex-col-reverse md:flex-row items-center justify-center gap-12 md:gap-16">
@@ -203,20 +203,22 @@
           </div>
         </div>
       </div>
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg
-          class="w-6 h-6 text-accentCyan"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          ></path>
-        </svg>
+      <div class="absolute bottom-10 inset-x-0 flex justify-center animate-bounce">
+        <a href="#about" aria-label="Scroll Down" class="text-accentCyan hover:text-accentEmerald transition-colors">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </a>
       </div>
     </section>
 
