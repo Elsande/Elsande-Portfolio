@@ -7,18 +7,20 @@ let currentLang = 'en';
 const translations = {
   en: {
     phrases: [
-      'Machine Learning Engineer',
-      'AI Research Enthusiast', 
+      'AI & Machine Learning Engineer',
+      'IT Research & Development',
+      'Data Science Research Enthusiast',
       'Deep Learning Developer',
-      'Data Science Specialist'
+      'Applied AI Researcher'
     ]
   },
   id: {
     phrases: [
-      'Insinyur Machine Learning',
-      'Peneliti Kecerdasan Buatan',
-      'Pengembang Deep Learning', 
-      'Spesialis Data Science'
+      'Insinyur AI & Machine Learning',
+      'Penelitian & Pengembangan TI',
+      'Peminat Riset Data Science',
+      'Pengembang Deep Learning',
+      'Peneliti AI Terapan'
     ]
   }
 };
