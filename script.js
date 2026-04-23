@@ -8,8 +8,8 @@ const translations = {
   en: {
     phrases: [
       'AI & Machine Learning Engineer',
-      'IT Research & Development',
-      'Data Science Research Enthusiast',
+      'Full Stack Web Developer',
+      'Software Engineer',
       'Deep Learning Developer',
       'Applied AI Researcher'
     ]
@@ -17,8 +17,8 @@ const translations = {
   id: {
     phrases: [
       'Insinyur AI & Machine Learning',
-      'Penelitian & Pengembangan TI',
-      'Peminat Riset Data Science',
+      'Pengembang Web Full Stack',
+      'Software Engineer',
       'Pengembang Deep Learning',
       'Peneliti AI Terapan'
     ]
@@ -28,9 +28,11 @@ const translations = {
 document.addEventListener('DOMContentLoaded', () => {
   // Loading Screen
   const loader = document.getElementById('loader');
-  setTimeout(() => {
-    loader.classList.add('hidden');
-  }, 1500);
+  if (loader) {
+    setTimeout(() => {
+      loader.classList.add('hidden');
+    }, 1500);
+  }
 
   // Neural Network Canvas Animation
   initNeuralNetwork();
@@ -174,6 +176,7 @@ function initNeuralNetwork() {
 let typingTimeout;
 function initTypingAnimation() {
   const typedText = document.getElementById('typed-text');
+  if (!typedText) return;
   let phraseIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
@@ -230,6 +233,7 @@ function initScrollReveal() {
 function initMobileMenu() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  if (!menuBtn || !mobileMenu) return;
   const mobileLinks = mobileMenu.querySelectorAll('a');
 
   menuBtn.addEventListener('click', () => {
@@ -264,6 +268,7 @@ function initSmoothScroll() {
 // Contact Form
 function initContactForm() {
   const form = document.getElementById('contact-form');
+  if (!form) return;
   
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -323,8 +328,10 @@ function initLanguageToggle() {
     // Clear and restart typing animation
     clearTimeout(typingTimeout);
     const typedText = document.getElementById('typed-text');
-    typedText.textContent = '';
-    initTypingAnimation();
+    if (typedText) {
+      typedText.textContent = '';
+      initTypingAnimation();
+    }
   }
 
   function handleToggleClick(e) {
