@@ -1,0 +1,118 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 42px;
+  line-height: 1;
+  letter-spacing: -5px;
+  padding-right: 5px;
+}
+
+.brand span,
+.accent {
+  color: var(--accent);
+}
+
+nav {
+  display: flex;
+  gap: 32px;
+  margin-left: auto;
+  margin-right: 32px;
+}
+
+nav a {
+  font-size: 13px;
+  padding-block: 12px;
+  position: relative;
+}
+
+nav a:after {
+  content: "";
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s;
+}
+
+nav a:hover:after {
+  width: 100%;
+}
+
+.nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-tools button {
+  min-height: 44px;
+  padding: 8px 0;
+  font-size: 12px;
+}
+
+.nav-tools #theme-toggle {
+  font-size: 24px;
+  width: 32px;
+}
+
+.nav-tools span {
+  color: var(--muted);
+}
+
+#menu-toggle {
+  display: none;
+  font-size: 22px;
+  width: 36px;
+}
+
+.eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 20px;
+  padding: 12px;
+  background: var(--bg);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}

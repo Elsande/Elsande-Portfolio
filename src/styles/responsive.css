@@ -1,0 +1,229 @@
+@media (min-width: 1500px) {
+  .hero {
+    padding-top: 90px;
+  }
+  .portrait-block img {
+    height: 550px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .hero {
+    gap: 32px;
+    padding-top: 48px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 5.3vw, 60px);
+  }
+  .portrait-block {
+    min-height: 460px;
+  }
+  .portrait-block img {
+    height: 430px;
+  }
+  .portrait-top {
+    font-size: 8px;
+    padding: 18px;
+  }
+  .about {
+    gap: 48px;
+  }
+  .section {
+    padding-block: 75px;
+  }
+  .skills {
+    gap: 40px;
+  }
+  .contact-layout {
+    gap: 30px;
+  }
+  nav {
+    gap: 20px;
+    margin-right: 12px;
+  }
+  .diagram strong {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+  .nav {
+    height: 72px;
+  }
+  .nav-tools {
+    gap: 14px;
+  }
+  #menu-toggle {
+    display: block;
+  }
+  nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 20px;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+  }
+  nav.open {
+    display: flex;
+  }
+  nav a {
+    padding: 12px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 40px;
+    gap: 32px;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 9vw, 66px);
+  }
+  .hero-statement {
+    font-size: 28px;
+    margin-top: 24px;
+  }
+  .hero-description {
+    max-width: 480px;
+  }
+  .hero-copy > .eyebrow {
+    margin-bottom: 22px;
+  }
+  .hero-socials {
+    margin-top: 18px;
+  }
+  .portrait-block {
+    min-height: 0;
+    max-width: 100%;
+    height: 420px;
+  }
+  .portrait-block img {
+    height: 370px;
+    object-position: center 25%;
+    object-fit: cover;
+  }
+  .portrait-top {
+    font-size: 9px;
+  }
+  .portrait-caption {
+    padding: 16px 20px;
+  }
+  .hero-bottom {
+    margin-top: 0;
+    padding-block: 22px;
+    align-items: start;
+    font-size: 10px;
+  }
+  .hero-bottom > span {
+    max-width: 62%;
+  }
+  .hero-bottom > a {
+    text-align: right;
+  }
+  .section {
+    padding-block: 64px;
+  }
+  .about,
+  .skills,
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .about h2.multiline,
+  .skills h2.multiline {
+    white-space: normal;
+  }
+  .lead {
+    font-size: 19px;
+  }
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .section-heading .eyebrow {
+    margin-bottom: 14px;
+  }
+  .role {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-block: 26px;
+  }
+  .role h3 {
+    font-size: 21px;
+  }
+  .projects-grid {
+    gap: 36px;
+    grid-template-columns: 1fr;
+  }
+  .project-visual {
+    min-height: 290px;
+  }
+  .skills .skill-row:first-child {
+    padding-top: 4px;
+  }
+  .contact {
+    padding-block: 60px;
+  }
+  .contact-layout {
+    gap: 36px;
+  }
+  .email-link {
+    font-size: clamp(15px, 4.4vw, 24px);
+  }
+  .footer {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .footer > span {
+    font-size: 10px;
+  }
+  .footer > a:last-child {
+    margin-left: auto;
+  }
+  .project-intro {
+    padding-top: 28px;
+  }
+  .project-intro > .eyebrow {
+    margin-top: 36px;
+  }
+  .filters {
+    margin-top: 32px;
+  }
+  .filter {
+    padding: 10px 12px;
+  }
+  #loader {
+    padding: 24px;
+  }
+  .loader-top,
+  .loader-bottom {
+    font-size: 8px;
+  }
+  .loader-monogram {
+    font-size: 130px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+  #loader {
+    display: none !important;
+  }
+}

@@ -1,0 +1,87 @@
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #214b3b;
+  color: #f7f7f2;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 36px 48px;
+  pointer-events: none;
+  animation: loader-exit 0.65s cubic-bezier(0.76, 0, 0.24, 1) 1.05s both;
+}
+
+.loader-top,
+.loader-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font:
+    10px "Courier New",
+    monospace;
+  letter-spacing: 0.1em;
+}
+
+.loader-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader-monogram {
+  font:
+    bold 160px Georgia,
+    serif;
+  letter-spacing: -18px;
+  line-height: 1.2;
+  animation: monogram 0.65s ease both;
+}
+
+.loader-monogram > span {
+  color: #becfb2;
+}
+
+.loader-rule {
+  width: 180px;
+  height: 1px;
+  background: #93a58f;
+  margin-top: 30px;
+  transform-origin: left;
+  animation: draw 0.9s ease both;
+}
+
+.loader-caption {
+  font:
+    10px "Courier New",
+    monospace;
+  letter-spacing: 0.2em;
+  margin-top: 22px;
+}
+
+@keyframes monogram {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes loader-exit {
+  to {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
