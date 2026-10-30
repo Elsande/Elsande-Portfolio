@@ -1,3 +1,4 @@
+import Reveal from "../components/Reveal";
 import { skills } from "../data/skills";
 import { usePreferences } from "../hooks/usePreferences";
 
@@ -11,11 +12,11 @@ export default function Skills() {
         <p>{t("Chosen for the problem at hand.")}</p>
       </div>
       <div className="skill-list">
-        {skills.map((skill) => (
-          <div className="skill-row" key={skill.title}>
+        {skills.map((skill, index) => (
+          <Reveal className="skill-row" key={skill.title} delay={index * 60}>
             <h3>{skill.title}</h3>
             <p>{skill.tools}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

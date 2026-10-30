@@ -11,7 +11,7 @@ export default function App() {
     <PreferencesProvider>
       <Loader />
       <Header archive={archive} />
-      <main id="main" tabIndex={-1}>
+      <main id="main" className="page-content" tabIndex={-1}>
         {archive ? <ProjectsPage /> : <HomePage />}
       </main>
       <Footer />

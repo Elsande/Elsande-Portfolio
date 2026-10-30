@@ -55,8 +55,8 @@ export default function ProjectsPage() {
         {language === "id" ? "proyek ditampilkan" : "projects shown"}
       </p>
       <div className="projects-grid">
-        {visibleProjects.map((project) => (
-          <Reveal key={project.id}>
+        {visibleProjects.map((project, index) => (
+          <Reveal key={project.id} delay={(index % 2) * 80}>
             <ProjectCard project={project} />
           </Reveal>
         ))}

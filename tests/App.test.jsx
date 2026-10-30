@@ -39,6 +39,17 @@ const render = async () =>
   );
 
 describe("home and preferences", () => {
+  it("introduces the complete AI and data profile in both languages", async () => {
+    await render();
+    const about = container.querySelector("#about");
+    expect(about.textContent).toContain("data science");
+    expect(about.textContent).toContain("data engineering");
+    expect(about.textContent).not.toContain("At Platinum Ceramics");
+    await click("#lang-toggle");
+    expect(about.textContent).toContain("analisis data");
+    expect(about.textContent).toContain("fondasi data engineering");
+    expect(about.textContent).toContain("3.85");
+  });
   it("renders the CV experience and one page heading", async () => {
     await render();
     expect(container.querySelectorAll("h1")).toHaveLength(1);

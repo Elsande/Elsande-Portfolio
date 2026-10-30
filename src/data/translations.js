@@ -9,18 +9,13 @@ export const translations = {
   "AI & DATA PROFESSIONAL": "PROFESIONAL AI & DATA",
   "From complex data.\nTo practical solutions.":
     "Dari data kompleks.\nMenjadi solusi nyata.",
-  "I build AI systems and data workflows, from document validation to machine learning. Based in Surabaya, Indonesia.":
-    "Saya membangun sistem AI dan alur kerja data, dari validasi dokumen hingga machine learning. Berbasis di Surabaya, Indonesia.",
+  "I build AI and data solutions through machine learning, analytics, and software development. Based in Surabaya, Indonesia.":
+    "Saya mengembangkan solusi AI dan data melalui machine learning, analitik, dan pengembangan perangkat lunak. Berbasis di Surabaya, Indonesia.",
   "Explore my work": "Lihat proyek saya",
   "Download CV": "Unduh CV",
   "Currently · AI Engineer Intern @ Platinum Ceramics":
     "Saat ini · AI Engineer Intern @ Platinum Ceramics",
   ABOUT: "TENTANG",
-  "Curiosity backed\nby engineering.": "Rasa ingin tahu.\nDasar rekayasa.",
-  "I’m an Informatics Engineering graduate from Universitas Negeri Surabaya. My work sits at the intersection of AI, data, and software development.":
-    "Saya lulusan Teknik Informatika Universitas Negeri Surabaya. Fokus saya berada di persimpangan AI, data, dan pengembangan perangkat lunak.",
-  "At Platinum Ceramics, I work on document validation using OCR and Vision-Language Models. Previously, I worked on freelance machine learning projects and developed web applications at Radnet Digital Indonesia.":
-    "Di Platinum Ceramics, saya mengembangkan validasi dokumen menggunakan OCR dan Vision-Language Models. Sebelumnya, saya mengerjakan proyek machine learning freelance dan mengembangkan aplikasi web di Radnet Digital Indonesia.",
   "B.Sc. Informatics Engineering · 2021–2026":
     "S1 Teknik Informatika · 2021–2026",
   "Graduated with distinction": "Lulus dengan predikat pujian",

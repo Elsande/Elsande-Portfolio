@@ -49,6 +49,7 @@ vite.config.js            konfigurasi dua halaman dan pengujian
 
 ## Mengedit konten
 
+- Ringkasan profil About EN/ID: `src/data/about.js`.
 - Identitas, kontak, dan lokasi aset: `src/data/profile.js`.
 - Pengalaman dan terjemahan deskripsinya: `src/data/experience.js`.
 - Proyek, kategori, workflow, URL repository, dan deskripsi EN/ID: `src/data/projects.js`.
@@ -73,3 +74,6 @@ Grafik proyek merupakan ilustrasi workflow, bukan screenshot aplikasi atau klaim
 Ikon antarmuka menggunakan `lucide-react` melalui named imports. Ikon dekoratif diberi `aria-hidden`; nama tombol tetap tersedia untuk pembaca layar.
 
 Animasi reveal memakai `src/components/Reveal.jsx` dan IntersectionObserver native, dengan CSS di `src/styles/motion.css`. Konten tetap terlihat jika observer tidak tersedia. Preferensi reduced motion menonaktifkan animasi, termasuk bila diubah saat halaman terbuka. Foto ditampilkan dalam warna asli tanpa filter grayscale atau blending.
+
+
+Animasi masuk halaman menunggu loading pertama selesai. Baris pengalaman, keahlian, serta kartu proyek muncul bertahap saat scroll. Navigasi beranda–arsip menggunakan cross-document view transitions bila browser mendukungnya, dengan animasi masuk CSS sebagai fallback. Seluruh animasi dinonaktifkan ketika reduced motion aktif.

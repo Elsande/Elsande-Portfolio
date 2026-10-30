@@ -1,3 +1,4 @@
+import Reveal from "../components/Reveal";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "../data/projects";
 import { usePreferences } from "../hooks/usePreferences";
@@ -18,8 +19,10 @@ export default function SelectedWork() {
         </a>
       </div>
       <div className="projects-grid">
-        {projects.slice(0, 2).map((project) => (
-          <ProjectCard project={project} key={project.id} />
+        {projects.slice(0, 2).map((project, index) => (
+          <Reveal key={project.id} delay={index * 80}>
+            <ProjectCard project={project} />
+          </Reveal>
         ))}
       </div>
     </section>

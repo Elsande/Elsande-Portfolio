@@ -1,3 +1,4 @@
+import Reveal from "../components/Reveal";
 import { experience } from "../data/experience";
 import { usePreferences } from "../hooks/usePreferences";
 
@@ -16,16 +17,18 @@ export default function Experience() {
           </p>
         </div>
         <div className="timeline">
-          {experience.map((role) => (
-            <article className="role" key={role.company}>
-              <p className="role-date">{localize(role.date)}</p>
-              <div>
-                <h3>{role.title}</h3>
-                <p className="company">{role.company}</p>
-                <p>{localize(role.description)}</p>
-                <p className="role-stack">{role.stack}</p>
-              </div>
-            </article>
+          {experience.map((role, index) => (
+            <Reveal key={role.company} delay={Math.min(index, 2) * 60}>
+              <article className="role">
+                <p className="role-date">{localize(role.date)}</p>
+                <div>
+                  <h3>{role.title}</h3>
+                  <p className="company">{role.company}</p>
+                  <p>{localize(role.description)}</p>
+                  <p className="role-stack">{role.stack}</p>
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

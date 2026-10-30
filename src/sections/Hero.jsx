@@ -23,7 +23,7 @@ export default function Hero() {
         </p>
         <p className="hero-description">
           {t(
-            "I build AI systems and data workflows, from document validation to machine learning. Based in Surabaya, Indonesia.",
+            "I build AI and data solutions through machine learning, analytics, and software development. Based in Surabaya, Indonesia.",
           )}
         </p>
         <div className="actions">
