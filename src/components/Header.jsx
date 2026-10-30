@@ -1,3 +1,4 @@
+import { Sun, Moon, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { usePreferences } from "../hooks/usePreferences";
 
@@ -23,7 +24,8 @@ export default function Header({ archive }) {
       }
     };
     const onClick = (event) => {
-      if (!header.current?.contains(event.target)) setOpen(false);
+      // The icon can be replaced during the click; the original event path stays stable.
+      if (!event.composedPath().includes(header.current)) setOpen(false);
     };
     document.addEventListener("keydown", onKeyDown);
     document.addEventListener("click", onClick);
@@ -87,7 +89,11 @@ export default function Header({ archive }) {
               )}
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             >
-              ◐
+              {theme === "dark" ? (
+                <Sun className="icon" aria-hidden="true" />
+              ) : (
+                <Moon className="icon" aria-hidden="true" />
+              )}
             </button>
             <button
               id="menu-toggle"
@@ -97,7 +103,11 @@ export default function Header({ archive }) {
               aria-controls="navigation"
               onClick={() => setOpen(!open)}
             >
-              ☰
+              {open ? (
+                <X className="icon" aria-hidden="true" />
+              ) : (
+                <Menu className="icon" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>

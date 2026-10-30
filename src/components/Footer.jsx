@@ -1,3 +1,4 @@
+import { ArrowUp } from "lucide-react";
 import { usePreferences } from "../hooks/usePreferences";
 import { profile } from "../data/profile";
 
@@ -15,7 +16,10 @@ export default function Footer() {
       <span>
         © {new Date().getFullYear()} {profile.name}
       </span>
-      <a href="#main">{t("Back to top ↑")}</a>
+      <a className="inline-icon" href="#main">
+        {t("Back to top")}
+        <ArrowUp className="icon" aria-hidden="true" />
+      </a>
     </footer>
   );
 }

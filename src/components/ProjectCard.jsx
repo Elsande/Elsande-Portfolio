@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { usePreferences } from "../hooks/usePreferences";
 
 export default function ProjectCard({ project }) {
@@ -15,7 +16,7 @@ export default function ProjectCard({ project }) {
           <span>
             {t("PROJECT")} {project.id}
           </span>
-          <span aria-hidden="true">↗</span>
+          <ArrowUpRight className="icon" aria-hidden="true" />
         </span>
         <div className="diagram">
           <span>{project.workflow.input}</span>

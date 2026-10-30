@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { projects } from "../data/projects";
 import { usePreferences } from "../hooks/usePreferences";
 import ProjectCard from "../components/ProjectCard";
@@ -12,7 +13,8 @@ export default function SelectedWork() {
           <h2>{t("A few things I’ve built.")}</h2>
         </div>
         <a className="text-link" href="./projects.html">
-          {t("All projects ↗")}
+          {t("All projects")}
+          <ArrowUpRight className="icon" aria-hidden="true" />
         </a>
       </div>
       <div className="projects-grid">

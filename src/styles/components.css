@@ -116,3 +116,32 @@ nav a:hover:after {
   overflow: hidden;
   clip-path: inset(50%);
 }
+
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.6;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.inline-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.portrait-caption .icon,
+.location .icon {
+  width: 13px;
+  height: 13px;
+}
+.nav-tools #theme-toggle,
+.nav-tools #menu-toggle {
+  align-items: center;
+  justify-content: center;
+}
+.nav-tools #theme-toggle {
+  display: inline-flex;
+}
+.education-mark {
+  flex-shrink: 0;
+}

@@ -1,3 +1,4 @@
+import { ArrowUpRight, Download, ArrowDown, MapPin } from "lucide-react";
 import { profile } from "../data/profile";
 import { usePreferences } from "../hooks/usePreferences";
 import ExternalLink from "../components/ExternalLink";
@@ -28,11 +29,11 @@ export default function Hero() {
         <div className="actions">
           <a className="button primary" href="#projects">
             {t("Explore my work")}
-            <span aria-hidden="true">↗</span>
+            <ArrowUpRight className="icon" aria-hidden="true" />
           </a>
           <a className="button secondary" href={profile.cv} download>
             {t("Download CV")}
-            <span aria-hidden="true">↓</span>
+            <Download className="icon" aria-hidden="true" />
           </a>
         </div>
         <div className="hero-socials">
@@ -54,12 +55,18 @@ export default function Hero() {
         />
         <div className="portrait-caption">
           <span>{profile.shortName}</span>
-          <span>Surabaya, ID ↗</span>
+          <span className="inline-icon">
+            <MapPin className="icon" aria-hidden="true" />
+            Surabaya, ID
+          </span>
         </div>
       </div>
       <div className="hero-bottom">
         <span>{t("Currently · AI Engineer Intern @ Platinum Ceramics")}</span>
-        <a href="#about">{t("Scroll to discover ↓")}</a>
+        <a className="inline-icon" href="#about">
+          {t("Scroll to discover")}
+          <ArrowDown className="icon" aria-hidden="true" />
+        </a>
       </div>
     </section>
   );

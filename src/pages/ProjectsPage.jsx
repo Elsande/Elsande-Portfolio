@@ -1,3 +1,5 @@
+import Reveal from "../components/Reveal";
+import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { projects } from "../data/projects";
 import { usePreferences } from "../hooks/usePreferences";
@@ -20,7 +22,8 @@ export default function ProjectsPage() {
   return (
     <section className="container project-intro">
       <a className="text-link" href="./index.html">
-        {t("← Back to home")}
+        <ArrowLeft className="icon" aria-hidden="true" />
+        {t("Back to home")}
       </a>
       <p className="eyebrow">{t("PROJECT ARCHIVE / 2024–2026")}</p>
       <h1>{t("Work, in practice.")}</h1>
@@ -53,7 +56,9 @@ export default function ProjectsPage() {
       </p>
       <div className="projects-grid">
         {visibleProjects.map((project) => (
-          <ProjectCard project={project} key={project.id} />
+          <Reveal key={project.id}>
+            <ProjectCard project={project} />
+          </Reveal>
         ))}
       </div>
     </section>

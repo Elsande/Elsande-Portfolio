@@ -1,3 +1,4 @@
+import Reveal from "../components/Reveal";
 import Hero from "../sections/Hero";
 import About from "../sections/About";
 import Experience from "../sections/Experience";
@@ -9,11 +10,21 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <About />
-      <Experience />
-      <SelectedWork />
-      <Skills />
-      <Contact />
+      <Reveal>
+        <About />
+      </Reveal>
+      <Reveal>
+        <Experience />
+      </Reveal>
+      <Reveal>
+        <SelectedWork />
+      </Reveal>
+      <Reveal>
+        <Skills />
+      </Reveal>
+      <Reveal>
+        <Contact />
+      </Reveal>
     </>
   );
 }

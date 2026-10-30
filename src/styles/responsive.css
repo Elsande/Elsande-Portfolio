@@ -227,3 +227,10 @@
     display: none !important;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal[data-visible="false"] {
+    opacity: 1;
+    transform: none;
+  }
+}

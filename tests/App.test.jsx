@@ -96,6 +96,18 @@ describe("home and preferences", () => {
 });
 
 describe("mobile navigation", () => {
+  it("keeps the menu open when its SVG icon is clicked", async () => {
+    await render();
+    await act(async () =>
+      container
+        .querySelector("#menu-toggle svg path")
+        .dispatchEvent(new MouseEvent("click", { bubbles: true })),
+    );
+    expect(
+      container.querySelector("#menu-toggle").getAttribute("aria-expanded"),
+    ).toBe("true");
+  });
+
   it("opens, closes with Escape, and restores focus", async () => {
     await render();
     await click("#menu-toggle");

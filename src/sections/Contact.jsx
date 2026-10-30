@@ -1,3 +1,4 @@
+import { ArrowUpRight, Copy, Check, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { profile } from "../data/profile";
 import { usePreferences } from "../hooks/usePreferences";
@@ -39,19 +40,28 @@ export default function Contact() {
           <div className="contact-right">
             <a className="email-link" href={`mailto:${profile.email}`}>
               {profile.email}
-              <span aria-hidden="true">↗</span>
+              <ArrowUpRight className="icon" aria-hidden="true" />
             </a>
             <div className="contact-socials">
               <ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink>
               <ExternalLink href={profile.github}>GitHub</ExternalLink>
               <button className="text-link" id="copy-email" onClick={copyEmail}>
+                {feedback?.language === language &&
+                feedback.message === "Email address copied." ? (
+                  <Check className="icon" aria-hidden="true" />
+                ) : (
+                  <Copy className="icon" aria-hidden="true" />
+                )}
                 {t("Copy email")}
               </button>
             </div>
             <p id="copy-status" role="status" aria-live="polite">
               {feedback?.language === language ? t(feedback.message) : ""}
             </p>
-            <span className="location">{profile.location}</span>
+            <span className="location inline-icon">
+              <MapPin className="icon" aria-hidden="true" />
+              {profile.location}
+            </span>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { usePreferences } from "../hooks/usePreferences";
 
 export default function About() {
@@ -20,9 +21,11 @@ export default function About() {
           )}
         </p>
         <div className="education">
-          <span className="education-mark" aria-hidden="true">
-            ↗
-          </span>
+          <ArrowUpRight
+            className="education-mark"
+            size={28}
+            aria-hidden="true"
+          />
           <div>
             <strong>Universitas Negeri Surabaya</strong>
             <p>{t("B.Sc. Informatics Engineering · 2021–2026")}</p>

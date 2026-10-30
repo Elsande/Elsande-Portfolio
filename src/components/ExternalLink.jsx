@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 export default function ExternalLink({
   href,
   children,
@@ -12,7 +13,7 @@ export default function ExternalLink({
       rel="noopener noreferrer"
       {...props}
     >
-      {children} <span aria-hidden="true">↗</span>
+      {children} <ArrowUpRight className="icon" aria-hidden="true" />
     </a>
   );
 }

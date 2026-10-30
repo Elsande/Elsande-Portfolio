@@ -1,4 +1,7 @@
 export const translations = {
+  "Back to home": "Kembali ke beranda",
+  "Back to top": "Kembali ke atas",
+  "Scroll to discover": "Kenali lebih lanjut",
   About: "Tentang",
   Experience: "Pengalaman",
   Work: "Proyek",
@@ -12,7 +15,6 @@ export const translations = {
   "Download CV": "Unduh CV",
   "Currently · AI Engineer Intern @ Platinum Ceramics":
     "Saat ini · AI Engineer Intern @ Platinum Ceramics",
-  "Scroll to discover ↓": "Kenali lebih lanjut ↓",
   ABOUT: "TENTANG",
   "Curiosity backed\nby engineering.": "Rasa ingin tahu.\nDasar rekayasa.",
   "I’m an Informatics Engineering graduate from Universitas Negeri Surabaya. My work sits at the intersection of AI, data, and software development.":
@@ -28,7 +30,6 @@ export const translations = {
     "Pengalaman langsung, dari riset\nhingga alur kerja bisnis.",
   "SELECTED WORK": "PROYEK PILIHAN",
   "A few things I’ve built.": "Beberapa karya saya.",
-  "All projects ↗": "Semua proyek ↗",
   TOOLKIT: "KEAHLIAN",
   "Tools behind\nthe work.": "Perangkat di\nbalik karya.",
   "Chosen for the problem at hand.":
@@ -38,8 +39,6 @@ export const translations = {
   "Open to conversations about AI, data, and opportunities to build useful things together.":
     "Terbuka untuk diskusi tentang AI, data, dan kesempatan membangun sesuatu yang bermanfaat bersama.",
   "Copy email": "Salin email",
-  "Back to top ↑": "Kembali ke atas ↑",
-  "← Back to home": "← Kembali ke beranda",
   "Work, in practice.": "Karya dalam praktik.",
   "A collection of research and applied machine learning projects. Explore the workflows and source code.":
     "Kumpulan proyek penelitian dan penerapan machine learning. Jelajahi alur kerja dan kode sumbernya.",

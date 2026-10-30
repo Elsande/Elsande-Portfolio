@@ -67,3 +67,9 @@ Grafik proyek merupakan ilustrasi workflow, bukan screenshot aplikasi atau klaim
 ## Pengujian
 
 `npm test` menguji komponen React dengan Vitest + jsdom, termasuk StrictMode, navigasi, filter, persistensi bahasa/tema, storage diblokir, loader, reduced motion, dan clipboard. `node tests/check-build.mjs` memeriksa hasil build yang sudah ada. Setup tes memakai storage asli jsdom untuk menghindari konflik global localStorage eksperimental Node 26.
+
+## Ikon dan animasi
+
+Ikon antarmuka menggunakan `lucide-react` melalui named imports. Ikon dekoratif diberi `aria-hidden`; nama tombol tetap tersedia untuk pembaca layar.
+
+Animasi reveal memakai `src/components/Reveal.jsx` dan IntersectionObserver native, dengan CSS di `src/styles/motion.css`. Konten tetap terlihat jika observer tidak tersedia. Preferensi reduced motion menonaktifkan animasi, termasuk bila diubah saat halaman terbuka. Foto ditampilkan dalam warna asli tanpa filter grayscale atau blending.
