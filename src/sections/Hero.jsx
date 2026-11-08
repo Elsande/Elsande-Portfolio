@@ -9,7 +9,10 @@ export default function Hero() {
     <section className="container hero">
       <div className="hero-copy">
         <p className="eyebrow">
-          <span className="status-dot" />
+          <span className="tiny-cross" aria-hidden="true">
+            +
+          </span>
+          <span className="status-dot" aria-hidden="true" />
           {t("AI & DATA PROFESSIONAL")}
         </p>
         <h1>
@@ -43,16 +46,23 @@ export default function Hero() {
       </div>
       <div className="portrait-block">
         <div className="portrait-top">
+          <span className="panel-dots" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </span>
           <span>{t("THE PERSON BEHIND THE WORK")}</span>
           <span>01 / IE</span>
         </div>
-        <img
-          src={profile.portrait}
-          width="896"
-          height="1196"
-          alt={t("Portrait of Iffo Elsande Pratama Putra")}
-          fetchPriority="high"
-        />
+        <div className="portrait-image-wrapper">
+          <img
+            src={profile.portrait}
+            width="896"
+            height="1196"
+            alt={t("Portrait of Iffo Elsande Pratama Putra")}
+            fetchPriority="high"
+          />
+        </div>
         <div className="portrait-caption">
           <span>{profile.shortName}</span>
           <span className="inline-icon">
