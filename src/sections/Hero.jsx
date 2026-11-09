@@ -63,6 +63,23 @@ export default function Hero() {
             fetchPriority="high"
           />
         </div>
+        <div className="portrait-image-wrapper">
+          <div className="portrait-backdrop" aria-hidden="true" />
+          <div className="portrait-hud" aria-hidden="true">
+            <span className="hud-bracket hud-tl" />
+            <span className="hud-bracket hud-tr" />
+            <span className="hud-bracket hud-bl" />
+            <span className="hud-bracket hud-br" />
+            <span className="hud-tag">[ 01 // SYS: ACTIVE ]</span>
+          </div>
+          <img
+            src={profile.portrait}
+            width="896"
+            height="1196"
+            alt={t("Portrait of Iffo Elsande Pratama Putra")}
+            fetchPriority="high"
+          />
+        </div>
         <div className="portrait-caption">
           <span>{profile.shortName}</span>
           <span className="inline-icon">
