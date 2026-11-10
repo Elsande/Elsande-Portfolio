@@ -55,15 +55,6 @@ export default function Hero() {
           <span>01 / IE</span>
         </div>
         <div className="portrait-image-wrapper">
-          <img
-            src={profile.portrait}
-            width="896"
-            height="1196"
-            alt={t("Portrait of Iffo Elsande Pratama Putra")}
-            fetchPriority="high"
-          />
-        </div>
-        <div className="portrait-image-wrapper">
           <div className="portrait-backdrop" aria-hidden="true" />
           <div className="portrait-hud" aria-hidden="true">
             <span className="hud-bracket hud-tl" />

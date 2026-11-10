@@ -2,9 +2,6 @@
   .hero {
     padding-top: 90px;
   }
-  .portrait-block img {
-    max-height: 480px;
-  }
 }
 
 @media (max-width: 1050px) {
@@ -17,12 +14,6 @@
   }
   .portrait-block {
     min-height: 460px;
-  }
-  .portrait-image-wrapper {
-    min-height: 340px;
-  }
-  .portrait-block img {
-    max-height: 380px;
   }
   .portrait-top {
     font-size: 9px;
@@ -109,15 +100,6 @@
     min-height: 0;
     max-width: 100%;
     height: auto;
-  }
-  .portrait-image-wrapper {
-    min-height: 320px;
-    padding-top: 14px;
-  }
-  .portrait-block img {
-    max-height: 340px;
-    object-position: center bottom;
-    object-fit: contain;
   }
   .portrait-top {
     font-size: 9px;
