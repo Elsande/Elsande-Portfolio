@@ -12,9 +12,6 @@
   .hero h1 {
     font-size: clamp(40px, 5.3vw, 60px);
   }
-  .portrait-block {
-    min-height: 460px;
-  }
   .portrait-top {
     font-size: 9px;
     padding: 12px 14px;
@@ -97,7 +94,6 @@
     margin-top: 18px;
   }
   .portrait-block {
-    min-height: 0;
     max-width: 100%;
     height: auto;
   }
