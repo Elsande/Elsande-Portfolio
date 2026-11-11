@@ -12,7 +12,6 @@ export default function Hero() {
           <span className="tiny-cross" aria-hidden="true">
             +
           </span>
-          <span className="status-dot" aria-hidden="true" />
           {t("AI & DATA PROFESSIONAL")}
         </p>
         <h1>
